@@ -5,6 +5,8 @@ import Navbar from './components/Navbar';
 import Photo from './components/Photo';
 import NotFound from './components/NotFound';
 import { apiKey } from './config';
+import { Route, Routes, Link } from 'react-router-dom';
+import Dogs from './components/Dogs';
 
 function App() {
 
@@ -12,10 +14,13 @@ function App() {
 
   return (
     <div className="App">
-        <SearchForm />
-        <Navbar />
-        <Photo />
-        <NotFound />
+      <SearchForm />
+      <Navbar />
+      <Photo />
+      <NotFound />
+      <Routes>
+        <Route path='/dogs' element={<Dogs />} />
+      </Routes>
     </div>
   );
 }
