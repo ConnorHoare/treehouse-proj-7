@@ -4,9 +4,9 @@ const Navbar = () => {
     return (
         <nav className="main-nav">
         <ul>
-          <li><a href='#'>Cats</a></li>
+          <li><a href='/cats'>Cats</a></li>
           <li><a href='/dogs'>Dogs</a></li>
-          <li><a href='#'>Computers</a></li>
+          <li><a href='/computer'>Computers</a></li>
         </ul>
       </nav>
     )

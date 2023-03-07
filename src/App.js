@@ -7,6 +7,8 @@ import NotFound from './components/NotFound';
 import { apiKey } from './config';
 import { Route, Routes, Link } from 'react-router-dom';
 import Dogs from './components/Dogs';
+import Computer from './components/Computer';
+import Cats from './components/Cats';
 
 function App() {
 
@@ -20,6 +22,8 @@ function App() {
       <NotFound />
       <Routes>
         <Route path='/dogs' element={<Dogs />} />
+        <Route path='/computer' element={<Computer />} />
+        <Route path='/cats' element={<Cats />} />
       </Routes>
     </div>
   );
