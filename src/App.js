@@ -21,6 +21,7 @@ function App() {
       <Photo />
       <NotFound />
       <Routes>
+      <Route path='/search/:search' element={<Photo />}/>
         <Route path='/dogs' element={<Dogs />} />
         <Route path='/computer' element={<Computer />} />
         <Route path='/cats' element={<Cats />} />

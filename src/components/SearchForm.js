@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
-    const [searchTerm, setSearhTerm] = useState(null)
+    const search = useRef();
+    let navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(searchTerm)
+        let searchTerm = search.current.value;
+        let path = `/search/${searchTerm}`;
+        navigate(path)
     }
 
     return (
@@ -14,8 +18,7 @@ const SearchForm = () => {
             <input 
                 type="text"
                 placeholder="search"
-                value={searchTerm}
-                onChange={(e) => setSearhTerm(e.target.value)}
+                ref={search}
             />
             <button type="submit">Search</button>
         </form>
