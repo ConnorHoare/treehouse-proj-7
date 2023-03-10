@@ -9,10 +9,25 @@ import { Route, Routes, Link } from 'react-router-dom';
 import Dogs from './components/Dogs';
 import Computer from './components/Computer';
 import Cats from './components/Cats';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function App() {
-
   const flickrAPI = apiKey;
+
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=d654439ee5896b5c7314645e1c074c44&tags=${images}&per_page=24&format=json&nojsoncallback=1`)
+    .then(response => {
+      setImages(response.data.data)
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }, [])
+
+
 
   return (
     <div className="App">
