@@ -11,6 +11,7 @@ import Computer from './components/Computer';
 import Cats from './components/Cats';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import PhotoList from './components/PhotoList';
 
 function App() {
   const flickrAPI = apiKey;
@@ -19,12 +20,12 @@ function App() {
 
   useEffect(() => {
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=d654439ee5896b5c7314645e1c074c44&tags=${images}&per_page=24&format=json&nojsoncallback=1`)
-    .then(response => {
-      setImages(response.data.data)
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .then(response => {
+        setImages(response.data.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }, [])
 
 
@@ -33,10 +34,10 @@ function App() {
     <div className="App">
       <SearchForm />
       <Navbar />
-      <Photo />
+      <PhotoList data={images} />
       <NotFound />
       <Routes>
-      <Route path='/search/:search' element={<Photo />}/>
+        <Route path='/search/:search' element={<Photo />} />
         <Route path='/dogs' element={<Dogs />} />
         <Route path='/computer' element={<Computer />} />
         <Route path='/cats' element={<Cats />} />
