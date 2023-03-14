@@ -17,9 +17,14 @@ function App() {
   const flickrAPI = apiKey;
 
   const [images, setImages] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearch = (term) => {
+    setSearchTerm(term)
+  }
 
   useEffect(() => {
-    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=d654439ee5896b5c7314645e1c074c44&tags=${images}&per_page=24&format=json&nojsoncallback=1`)
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=d654439ee5896b5c7314645e1c074c44&tags=${searchTerm}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         setImages(response.data.data)
       })
@@ -32,9 +37,9 @@ function App() {
 
   return (
     <div className="App">
-      <SearchForm />
+      <SearchForm onSubmit={handleSearch}/>
       <Navbar />
-      <PhotoList data={images} />
+      <PhotoList searchTerm={searchTerm} />
       <NotFound />
       <Routes>
         <Route path='/search/:search' element={<Photo />} />
