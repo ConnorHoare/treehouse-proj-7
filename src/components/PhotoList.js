@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Photo from "./Photo";
-import apiKey from '../config'
+import apiKey from '../config';
 import axios from "axios";
 
 const PhotoList = ({ searchTerm }) => {
@@ -33,7 +33,12 @@ const PhotoList = ({ searchTerm }) => {
 
     return (
         <ul>
-            <Photo />
+        {photos && photos.map((photo) => {
+            <Photo 
+                url={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
+                key={photo.id}
+            />
+        })} 
         </ul>
     )
 }

@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
+import apiKey from './config';
 import SearchForm from './components/SearchForm';
 import Navbar from './components/Navbar';
 import Photo from './components/Photo';
 import NotFound from './components/NotFound';
-import { apiKey } from './config';
 import { Route, Routes, Link } from 'react-router-dom';
 import Dogs from './components/Dogs';
 import Computer from './components/Computer';
@@ -12,6 +12,7 @@ import Cats from './components/Cats';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import PhotoList from './components/PhotoList';
+
 
 function App() {
   const flickrAPI = apiKey;
@@ -33,6 +34,7 @@ function App() {
       })
   }, [])
 
+  // Make the images appear when the search form is submitted or one of the nav links is pressed
 
 
   return (
