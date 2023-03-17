@@ -4,6 +4,8 @@ import apiKey from '../config';
 import axios from "axios";
 
 const PhotoList = ({ searchTerm }) => {
+
+    //Add props to pass to app.js
     const [photos, setPhotos] = useState([]);
 
     useEffect(() => {
